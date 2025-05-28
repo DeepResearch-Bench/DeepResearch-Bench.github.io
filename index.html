@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="DeepResearch Bench: A Comprehensive Benchmark for Deep Research Agents - Evaluating LLM-based agents for autonomous research tasks.">
+  <meta name="keywords" content="DeepResearch Bench, Deep Research Agents, LLM Agents, Research Benchmark">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeepResearch Bench: A Comprehensive Benchmark for Deep Research Agents</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <!-- Navigation items removed as requested -->
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">DeepResearch Bench: A Comprehensive Benchmark for Deep Research Agents</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="#">Mingxuan Du</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="#">Benfeng Xu</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="#">Chiwei Zhu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Xiaorui Wang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Zhendong Mao</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Science and Technology of China,</span>
+            <span class="author-block"><sup>2</sup>Metastone Technology, Beijing, China</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Leaderboard Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-trophy"></i>
+                  </span>
+                  <span>Leaderboard</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Data Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-database"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/experiment_comparison.png" alt="DeepResearch Bench Performance Overview" style="width: 100%; height: auto;">
+      <h2 class="subtitle has-text-centered">
+        DeepResearch Bench provides a comprehensive evaluation framework for Deep Research Agents across 22 distinct research fields.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            <strong>Deep Research Agents (DRAs)</strong> are currently one of the most widely used class of LLM-based agents. By autonomously orchestrating multistep web exploration, targeted retrieval, and higher-order synthesis, they transform vast amounts of online information into analyst-grade, citation-rich reports—compressing hours of manual desk research into minutes.
+          </p>
+          <p>
+            However, a comprehensive benchmark for systematically evaluating the capabilities of these agents remains absent. To bridge this gap, we present <strong>DeepResearch Bench</strong>, a benchmark consisting of 100 <strong>PhD-level</strong> research tasks, each meticulously crafted by domain experts across 22 distinct fields.
+          </p>
+          <p>
+            Since evaluating the multifaceted capabilities of DRAs is a complex and labor intensive endeavor, we propose two novel evaluation methodologies designed to achieve strong alignment with human judgment. One is <strong>a reference-based method with adaptive criteria</strong> to assess the quality of generated research reports. The other framework is introduced to evaluate an agent's information retrieval and collection capabilities by assessing its effective citation count and overall citation accuracy.
+          </p>
+          <p>
+            We are open-sourcing DeepResearch Bench and key components of these frameworks to accelerate the development of practical LLM-based agents.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Benchmark Construction Overview. -->
+    <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Overview of Benchmark Construction</h2>
+        <div class="content has-text-justified">
+          <p>
+            To comprehensively evaluate Deep Research Agents, we invited 100+ domain experts to create challenging research tasks that reflect real-world demands. This resulted in DeepResearch Bench, a benchmark consisting of 100 PhD-level research tasks—50 in Chinese and 50 in English—spanning 22 distinct fields.
+          </p>
+          <p>
+            We designed two complementary evaluation frameworks to assess different aspects of DRA capabilities: <strong>RACE</strong> (Reference-based Adaptive Criteria-driven Evaluation framework with Dynamic Weighting) for evaluating the quality of generated research reports, and <strong>FACT</strong> (Framework for Factual Abundance and Citation Trustworthiness) for assessing information retrieval effectiveness and citation accuracy. These frameworks work together to provide a comprehensive evaluation of deep research agents' performance.
+          </p>
+        </div>
+        <img src="./static/images/framework.png" alt="DeepResearch Bench Framework Overview" style="width: 100%; height: auto; margin-top: 20px;">
+      </div>
+    </div>
+    <!--/ Benchmark Construction Overview. -->
+
+    <!-- Topic Distribution Analysis. -->
+    <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Topic Distribution Analysis</h2>
+        <div class="content has-text-justified">
+          <p>
+            To ensure our benchmark reflects real-world research needs, we analyzed 96,147 raw user queries from interactions with web search-enabled LLM Chatbot. After filtering for queries that require deep research capabilities—involving multiple rounds of web searches, information gathering, and synthesis—we identified 44,019 relevant queries. We then employed DeepSeek-V3-0324 to classify these queries into 22 distinct topic domains.
+          </p>
+          <p>
+            The resulting distribution reveals that Science & Technology and Business & Finance represent the highest proportions of deep research queries. This distribution directly guided our benchmark construction, ensuring that the 100 tasks in DeepResearch Bench maintain the same topical balance as observed in real-world usage patterns.
+          </p>
+        </div>
+        <img src="./static/images/query_distribution.png" alt="Topic Distribution" style="width: 100%; height: auto; margin-top: 20px;">
+      </div>
+    </div>
+    <!--/ Topic Distribution Analysis. -->
+
+    <!-- Professional Task Examples. -->
+    <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Professional Research Tasks</h2>
+        <div class="content has-text-justified">
+          <p>
+            Each task in DeepResearch Bench was meticulously crafted by domain experts—PhD holders or senior practitioners with over five years of relevant experience. These tasks are designed to test the upper limits of DRAs' capabilities, requiring sophisticated multi-step reasoning, comprehensive information synthesis, and nuanced domain understanding.
+          </p>
+          <p>
+            The tasks span diverse research scenarios, from technical analysis in emerging technologies to comprehensive market research and scientific literature reviews, ensuring a thorough evaluation of agents' versatility across different research contexts.
+          </p>
+        </div>
+        <img src="./static/images/showcase.png" alt="Example Tasks from DeepResearch Bench" style="width: 100%; height: auto; margin-top: 20px;">
+      </div>
+    </div>
+    <!--/ Professional Task Examples. -->
+
+    <!-- Main Results. -->
+    <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Main Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            We comprehensively evaluated four early-released Deep Research Agents alongside several leading LLMs with built-in web search capabilities. The evaluation employed both RACE and FACT frameworks to assess different aspects of agent performance.
+          </p>
+        </div>
+        
+        <!-- Main Results Table -->
+        <div class="table-container" style="margin-top: 20px; overflow-x: auto;">
+          <table class="table is-bordered is-striped is-narrow is-hoverable" style="margin: 0 auto; width: 100%;">
+            <caption style="caption-side: top; text-align: center; font-weight: bold; margin-bottom: 10px;">
+              Table 1: Overall evaluation results of DeepResearch Bench. Bold denotes the highest score in each column for Deep Research Agents (and for LLM with Search Tools within their respective section). Underlined denotes the second highest.
+            </caption>
+            <thead>
+              <tr>
+                <th rowspan="2" style="vertical-align: middle; text-align: center;">Model</th>
+                <th colspan="5" style="text-align: center;">RACE</th>
+                <th colspan="2" style="text-align: center;">FACT</th>
+              </tr>
+              <tr>
+                <th style="text-align: center;">Overall</th>
+                <th style="text-align: center;">Comp.</th>
+                <th style="text-align: center;">Depth</th>
+                <th style="text-align: center;">Inst.</th>
+                <th style="text-align: center;">Read.</th>
+                <th style="text-align: center;">C. Acc.</th>
+                <th style="text-align: center;">E. Cit.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="8" style="text-align: center; font-style: italic; background-color: #f5f5f5;">LLM with Search Tools</td>
+              </tr>
+              <tr>
+                <td>Claude-3.7-Sonnet w/Search</td>
+                <td style="text-align: center;"><strong>40.67</strong></td>
+                <td style="text-align: center;"><strong>38.99</strong></td>
+                <td style="text-align: center;"><strong>37.66</strong></td>
+                <td style="text-align: center;"><strong>45.77</strong></td>
+                <td style="text-align: center;">41.46</td>
+                <td style="text-align: center;"><u>93.68</u></td>
+                <td style="text-align: center;"><u>32.48</u></td>
+              </tr>
+              <tr>
+                <td>Claude-3.5-Sonnet w/Search</td>
+                <td style="text-align: center;">28.48</td>
+                <td style="text-align: center;">24.82</td>
+                <td style="text-align: center;">22.82</td>
+                <td style="text-align: center;">35.12</td>
+                <td style="text-align: center;">35.08</td>
+                <td style="text-align: center;"><strong>94.04</strong></td>
+                <td style="text-align: center;">9.78</td>
+              </tr>
+              <tr>
+                <td>Perplexity-Sonar-Reasoning-Pro(high)</td>
+                <td style="text-align: center;"><u>40.22</u></td>
+                <td style="text-align: center;"><u>37.38</u></td>
+                <td style="text-align: center;">36.11</td>
+                <td style="text-align: center;"><u>45.66</u></td>
+                <td style="text-align: center;"><strong>44.74</strong></td>
+                <td style="text-align: center;">39.36</td>
+                <td style="text-align: center;">8.35</td>
+              </tr>
+              <tr>
+                <td>Perplexity-Sonar-Reasoning(high)</td>
+                <td style="text-align: center;">40.18</td>
+                <td style="text-align: center;">37.14</td>
+                <td style="text-align: center;"><u>36.73</u></td>
+                <td style="text-align: center;">45.15</td>
+                <td style="text-align: center;"><u>44.35</u></td>
+                <td style="text-align: center;">48.67</td>
+                <td style="text-align: center;">11.34</td>
+              </tr>
+              <tr>
+                <td>Perplexity-Sonar-Pro(high)</td>
+                <td style="text-align: center;">38.93</td>
+                <td style="text-align: center;">36.38</td>
+                <td style="text-align: center;">34.26</td>
+                <td style="text-align: center;">44.70</td>
+                <td style="text-align: center;">43.35</td>
+                <td style="text-align: center;">78.66</td>
+                <td style="text-align: center;">14.74</td>
+              </tr>
+              <tr>
+                <td>Perplexity-Sonar(high)</td>
+                <td style="text-align: center;">34.54</td>
+                <td style="text-align: center;">30.95</td>
+                <td style="text-align: center;">27.51</td>
+                <td style="text-align: center;">42.33</td>
+                <td style="text-align: center;">41.60</td>
+                <td style="text-align: center;">74.42</td>
+                <td style="text-align: center;">8.67</td>
+              </tr>
+              <tr>
+                <td>Gemini-2.5-Pro-Grounding</td>
+                <td style="text-align: center;">35.12</td>
+                <td style="text-align: center;">34.06</td>
+                <td style="text-align: center;">29.79</td>
+                <td style="text-align: center;">41.67</td>
+                <td style="text-align: center;">37.16</td>
+                <td style="text-align: center;">81.81</td>
+                <td style="text-align: center;"><strong>32.88</strong></td>
+              </tr>
+              <tr>
+                <td>Gemini-2.5-Flash-Grounding</td>
+                <td style="text-align: center;">32.39</td>
+                <td style="text-align: center;">31.63</td>
+                <td style="text-align: center;">26.73</td>
+                <td style="text-align: center;">38.82</td>
+                <td style="text-align: center;">34.48</td>
+                <td style="text-align: center;">81.92</td>
+                <td style="text-align: center;">31.08</td>
+              </tr>
+              <tr>
+                <td>GPT-4o-Search-Preview(high)</td>
+                <td style="text-align: center;">35.10</td>
+                <td style="text-align: center;">31.99</td>
+                <td style="text-align: center;">27.57</td>
+                <td style="text-align: center;">43.17</td>
+                <td style="text-align: center;">41.23</td>
+                <td style="text-align: center;">88.41</td>
+                <td style="text-align: center;">4.79</td>
+              </tr>
+              <tr>
+                <td>GPT-4o-Mini-Search-Preview(high)</td>
+                <td style="text-align: center;">31.55</td>
+                <td style="text-align: center;">27.38</td>
+                <td style="text-align: center;">22.64</td>
+                <td style="text-align: center;">40.67</td>
+                <td style="text-align: center;">39.91</td>
+                <td style="text-align: center;">84.98</td>
+                <td style="text-align: center;">4.95</td>
+              </tr>
+              <tr>
+                <td>GPT-4.1 w/Search(high)</td>
+                <td style="text-align: center;">33.46</td>
+                <td style="text-align: center;">29.42</td>
+                <td style="text-align: center;">25.38</td>
+                <td style="text-align: center;">42.33</td>
+                <td style="text-align: center;">40.77</td>
+                <td style="text-align: center;">87.83</td>
+                <td style="text-align: center;">4.42</td>
+              </tr>
+              <tr>
+                <td>GPT-4.1-mini w/Search(high)</td>
+                <td style="text-align: center;">30.26</td>
+                <td style="text-align: center;">26.05</td>
+                <td style="text-align: center;">20.75</td>
+                <td style="text-align: center;">39.65</td>
+                <td style="text-align: center;">39.33</td>
+                <td style="text-align: center;">84.58</td>
+                <td style="text-align: center;">4.35</td>
+              </tr>
+              <tr>
+                <td colspan="8" style="text-align: center; font-style: italic; background-color: #f5f5f5;">Deep Research Agent</td>
+              </tr>
+              <tr>
+                <td>Grok Deeper Search</td>
+                <td style="text-align: center;">40.24</td>
+                <td style="text-align: center;">37.97</td>
+                <td style="text-align: center;">35.37</td>
+                <td style="text-align: center;">46.30</td>
+                <td style="text-align: center;">44.05</td>
+                <td style="text-align: center;"><u>83.59</u></td>
+                <td style="text-align: center;">8.15</td>
+              </tr>
+              <tr>
+                <td>Perplexity Deep Research</td>
+                <td style="text-align: center;">42.25</td>
+                <td style="text-align: center;">40.69</td>
+                <td style="text-align: center;">39.39</td>
+                <td style="text-align: center;">46.40</td>
+                <td style="text-align: center;">44.28</td>
+                <td style="text-align: center;"><strong>90.24</strong></td>
+                <td style="text-align: center;">31.26</td>
+              </tr>
+              <tr>
+                <td>Gemini-2.5-Pro Deep Research</td>
+                <td style="text-align: center;"><strong>48.88</strong></td>
+                <td style="text-align: center;"><strong>48.53</strong></td>
+                <td style="text-align: center;"><strong>48.50</strong></td>
+                <td style="text-align: center;"><u>49.18</u></td>
+                <td style="text-align: center;"><strong>49.44</strong></td>
+                <td style="text-align: center;">81.44</td>
+                <td style="text-align: center;"><strong>111.21</strong></td>
+              </tr>
+              <tr>
+                <td>OpenAI Deep Research</td>
+                <td style="text-align: center;"><u>46.98</u></td>
+                <td style="text-align: center;"><u>46.87</u></td>
+                <td style="text-align: center;"><u>45.25</u></td>
+                <td style="text-align: center;"><strong>49.27</strong></td>
+                <td style="text-align: center;"><u>47.14</u></td>
+                <td style="text-align: center;">77.96</td>
+                <td style="text-align: center;"><u>40.79</u></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="content has-text-justified" style="margin-top: 30px;">
+          <p>
+            <strong>RACE Framework Results:</strong> Gemini-2.5-Pro Deep Research demonstrated leading overall performance (48.88) across all dimensions, with OpenAI Deep Research following closely (46.98). Notably, different models excelled in different dimensions—OpenAI Deep Research achieved the highest score in Instruction-Following (49.27), indicating that evaluation dimensions capture distinct capabilities.
+          </p>
+          <p>
+            <strong>FACT Framework Results:</strong> Deep Research Agents significantly outperformed LLMs with Search Tools in terms of Effective Citations. Gemini-2.5-Pro Deep Research achieved an exceptional 111.21 average effective citations, demonstrating superior information gathering capabilities. However, Perplexity Deep Research showed the highest Citation Accuracy (90.24%), indicating stronger precision in source attribution.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Main Results. -->
+
+    <!-- Analysis. -->
+    <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Human Consistency</h2>
+        <div class="content has-text-justified">
+
+          <h3 class="title is-5">Human Data Collection</h4>
+          <p>
+            We recruited 70+ annotators with Master's degrees and relevant domain expertise to gather human judgments. Using a custom interface, they evaluated reports across four dimensions and overall performance, guided only by basic scoring criteria to minimize bias. Each annotator was limited to three queries maximum to ensure diverse perspectives. For each of the 50 Chinese tasks from DeepResearch Bench, three domain-expert annotators independently scored reports generated by four distinct agents.
+          </p>
+
+          <h3 class="title is-5" style="margin-top: 20px;">Evaluation Metrics</h4>
+          <p>
+            We designed four metrics to quantify different aspects of alignment between evaluation methods and human judgment:<strong>  i.Pairwise Agreement Rate (PAR)</strong> measures how often our evaluation method's preferences match human experts' preferences when comparing pairs of reports.<strong>  ii.Overall Pearson Correlation (OPC)</strong> quantifies the linear relationship between average model scores from our evaluation method and those from human experts.<strong>  iii.Filtered Average Pearson (FAP)</strong> & <strong>  iv.Spearman Correlation (FAS)</strong> provide more robust assessment by filtering out tasks with low expert agreement.
+          </p>
+
+          <h3 class="title is-5" style="margin-top: 20px;">Comparison of Different Evaluation Methods</h4>
+          <p>
+            Given that existing evaluation methods are generally unsuitable for assessing deep research reports, we compared the human consistency of several RACE variants against a vanilla prompt baseline. The complete RACE framework achieved an overall score of 72.56%, significantly outperforming the vanilla baseline. Ablation studies revealed that removing the reference-based comparison caused the most significant performance drop, confirming that relative scoring against high-quality references is crucial for discriminative evaluation.
+          </p>
+
+          <!-- Human Consistency Results Table -->
+          <div class="table-container" style="margin-top: 20px; margin-bottom: 20px; overflow-x: auto;">
+            <table class="table is-bordered is-striped is-narrow is-hoverable" style="margin: 0 auto; width: 100%;">
+              <caption style="caption-side: top; text-align: center; font-weight: bold; margin-bottom: 10px;">
+                Table 2: Comparison of human consistency scores across different evaluation methods. Prefixed with '-', indicating removal of specific components from the full framework. The best scores for each metric among automated methods are in bold.
+              </caption>
+              <thead>
+                <tr>
+                  <th style="text-align: center;">Evaluation Method</th>
+                  <th style="text-align: center;">PAR</th>
+                  <th style="text-align: center;">OPC</th>
+                  <th style="text-align: center;">FAP</th>
+                  <th style="text-align: center;">FAS</th>
+                  <th style="text-align: center;">Overall Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Vanilla Prompt</td>
+                  <td style="text-align: center;">58.89</td>
+                  <td style="text-align: center;">98.89</td>
+                  <td style="text-align: center;">40.30</td>
+                  <td style="text-align: center;">43.75</td>
+                  <td style="text-align: center;">60.46</td>
+                </tr>
+                <tr style="border-top: 2px solid #ddd;">
+                  <td><strong>RACE(Full)</strong></td>
+                  <td style="text-align: center;"><strong>71.33</strong></td>
+                  <td style="text-align: center;">99.54</td>
+                  <td style="text-align: center;"><strong>60.24</strong></td>
+                  <td style="text-align: center;"><strong>59.12</strong></td>
+                  <td style="text-align: center;"><strong>72.56</strong></td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 20px;">- No Criteria Weights</td>
+                  <td style="text-align: center;">70.67</td>
+                  <td style="text-align: center;">99.62</td>
+                  <td style="text-align: center;">59.83</td>
+                  <td style="text-align: center;">56.27</td>
+                  <td style="text-align: center;">71.60</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 20px;">- No Dim Weights</td>
+                  <td style="text-align: center;">70.89</td>
+                  <td style="text-align: center;">99.54</td>
+                  <td style="text-align: center;">60.11</td>
+                  <td style="text-align: center;">57.22</td>
+                  <td style="text-align: center;">71.94</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 20px;">- No Weights</td>
+                  <td style="text-align: center;">71.11</td>
+                  <td style="text-align: center;"><strong>99.69</strong></td>
+                  <td style="text-align: center;">59.46</td>
+                  <td style="text-align: center;">58.17</td>
+                  <td style="text-align: center;">72.11</td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 20px;">- No Reference</td>
+                  <td style="text-align: center;">66.56</td>
+                  <td style="text-align: center;">97.46</td>
+                  <td style="text-align: center;">57.51</td>
+                  <td style="text-align: center;">51.23</td>
+                  <td style="text-align: center;">68.19</td>
+                </tr>
+                <tr>
+                  <td>Reverse Position</td>
+                  <td style="text-align: center;">69.56</td>
+                  <td style="text-align: center;">97.20</td>
+                  <td style="text-align: center;">56.75</td>
+                  <td style="text-align: center;">55.49</td>
+                  <td style="text-align: center;">69.75</td>
+                </tr>
+                <tr>
+                  <td>Static Criteria</td>
+                  <td style="text-align: center;">68.33</td>
+                  <td style="text-align: center;">98.73</td>
+                  <td style="text-align: center;">57.86</td>
+                  <td style="text-align: center;">57.70</td>
+                  <td style="text-align: center;">70.65</td>
+                </tr>
+                <tr style="border-top: 2px solid #ddd;">
+                  <td>Human Inter-Agreement</td>
+                  <td style="text-align: center;">68.44</td>
+                  <td style="text-align: center;">-</td>
+                  <td style="text-align: center;">-</td>
+                  <td style="text-align: center;">-</td>
+                  <td style="text-align: center;">-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="title is-5" style="margin-top: 30px;">Comparison of Different Judge LLMs</h3>
+          <p>
+            We evaluated several leading proprietary LLMs as Judge LLMs within the RACE framework to balance performance and cost considerations.
+          </p>
+
+          <!-- Judge LLM Comparison Table -->
+          <div class="table-container" style="margin-top: 20px; margin-bottom: 20px; overflow-x: auto;">
+            <table class="table is-bordered is-striped is-narrow is-hoverable" style="margin: 0 auto; width: 100%;">
+              <caption style="caption-side: top; text-align: center; font-weight: bold; margin-bottom: 10px;">
+                Table 3: Comparison of human consistency scores and average cost using different Judge LLMs within the RACE(Full) framework. The best for each metric are highlighted in bold.
+              </caption>
+              <thead>
+                <tr>
+                  <th style="text-align: center;">Judge LLM</th>
+                  <th style="text-align: center;">PAR</th>
+                  <th style="text-align: center;">OPC</th>
+                  <th style="text-align: center;">FAP</th>
+                  <th style="text-align: center;">FAS</th>
+                  <th style="text-align: center;">Overall</th>
+                  <th style="text-align: center;">Avg. Cost ($)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Gemini 2.5 Pro Preview</td>
+                  <td style="text-align: center;"><strong>71.33</strong></td>
+                  <td style="text-align: center;"><strong>99.54</strong></td>
+                  <td style="text-align: center;"><strong>60.24</strong></td>
+                  <td style="text-align: center;">59.12</td>
+                  <td style="text-align: center;"><strong>72.56</strong></td>
+                  <td style="text-align: center;">0.13</td>
+                </tr>
+                <tr>
+                  <td>o3</td>
+                  <td style="text-align: center;">68.11</td>
+                  <td style="text-align: center;">96.22</td>
+                  <td style="text-align: center;">57.64</td>
+                  <td style="text-align: center;">52.36</td>
+                  <td style="text-align: center;">68.58</td>
+                  <td style="text-align: center;">0.37</td>
+                </tr>
+                <tr>
+                  <td>o4-mini</td>
+                  <td style="text-align: center;">70.89</td>
+                  <td style="text-align: center;">97.06</td>
+                  <td style="text-align: center;">59.54</td>
+                  <td style="text-align: center;">59.02</td>
+                  <td style="text-align: center;">71.63</td>
+                  <td style="text-align: center;"><strong>0.04</strong></td>
+                </tr>
+                <tr>
+                  <td>Claude 3.7 Sonnet</td>
+                  <td style="text-align: center;">70.78</td>
+                  <td style="text-align: center;">96.53</td>
+                  <td style="text-align: center;">58.22</td>
+                  <td style="text-align: center;"><strong>63.61</strong></td>
+                  <td style="text-align: center;">72.28</td>
+                  <td style="text-align: center;">0.47</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            Gemini 2.5 Pro Preview achieved the best overall performance score of 72.56% while maintaining a competitive average cost of $0.13 per query. Based on this comprehensive evaluation balancing performance and cost efficiency, we selected Gemini 2.5 Pro Preview as the Judge LLM in our final framework.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Analysis. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{du2025deepresearch,
+  author    = {Mingxuan Du and Benfeng Xu and Chiwei Zhu and Xiaorui Wang and Zhendong Mao},
+  title     = {DeepResearch Bench: A Comprehensive Benchmark for Deep Research Agents},
+  journal   = {arXiv preprint},
+  year      = {2025},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="#">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="#" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This website template is based on the <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies project page</a>.
+            Please remember to remove the analytics code included in the header of the website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html> 
