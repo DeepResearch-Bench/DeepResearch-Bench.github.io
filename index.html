@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="description"
@@ -12,131 +12,76 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-PYVRSFMDRL');
   </script>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
+  <!-- 字体 & 样式依赖 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/logo.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/index.js"></script>
-  
+
+  <!-- ================== 自定义覆盖样式 ================== -->
   <style>
-    .navbar-logo {
-      display: flex;
-      align-items: center;
-      padding: 10px 15px;
-    }
-    
-    .navbar-logo img {
-      height: 32px;
-      width: auto;
-    }
-    
-    .try-chat-btn {
-      display: inline-block;
-      background-color: transparent;
-      color: #000;
-      border: 1px solid #000;
-      border-radius: 30px;
-      padding: 10px 25px;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      margin-left: 15px;
-    }
-    
-    .try-chat-btn:hover {
-      background-color: #E6D8FF;
-      color: #000;
-    }
-    
-    .navbar-item.has-dropdown {
-      position: relative;
-    }
-    
-    .navbar-dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background-color: #fff;
-      border-radius: 6px;
-      box-shadow: 0 8px 16px rgba(10, 10, 10, 0.1);
-      z-index: 20;
-      min-width: 200px;
-    }
-    
-    .navbar-item.has-dropdown:hover .navbar-dropdown {
-      display: block;
-    }
-    
-    .navbar-dropdown .navbar-item {
-      padding: 0.5rem 1rem;
-      white-space: nowrap;
-    }
-    
-    .navbar-menu {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-    }
+  /* 全局保险：避免水平滚动 */
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{overflow-x:hidden;}
+
+  /* 顶部导航（三元素：Logo｜汉堡｜按钮）*/
+  nav.navbar{
+    width:100%;                  /* 占满整行 */
+    padding:.5rem 2rem;          /* 左右各留 2 rem 内边距 */
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .navbar-logo img{height:28px;width:auto;} /* 缩小Logo高度 */
+
+  .navbar-burger{
+    border:none;background:transparent;cursor:pointer;
+    font-size:1.25rem;padding:.5rem;line-height:1;
+  }
+
+  .try-deepresearch-btn{
+    display:inline-block;
+    padding:8px 20px;             
+    font-size:.9rem;font-weight:700; 
+    color:#000;border:1px solid #000;border-radius:30px;
+    background:transparent;text-decoration:none;
+    transition:.25s;
+  }
+  .try-deepresearch-btn:hover{background:#E6D8FF;}
+
+  /* 其余防溢出 */
+  pre,code{white-space:pre-wrap;word-break:break-all;overflow-x:auto;}
+  .table-container table{width:max-content;}
+  img{max-width:100%;height:auto;}
   </style>
 </head>
-<body>
 
+<body>
+<!-- ================== 顶部导航 ================== -->
 <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a href="https://www.wenxiaobai.com/chat" class="navbar-logo">
-      <img src="./static/images/logo_1.png" alt="DeepResearch Bench Logo">
-    </a>
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1;">
-      <!-- Left empty for balance -->
-    </div>
-    <div class="navbar-end">
-      <div class="navbar-item has-dropdown">
-        <a class="navbar-link">
-          <span class="icon">
-            <i class="fas fa-bars"></i>
-          </span>
-        </a>
-        <div class="navbar-dropdown">
-          <a href="#abstract" class="navbar-item">Abstract</a>
-          <a href="#BibTeX" class="navbar-item">BibTeX</a>
-          <a href="#benchmark-construction" class="navbar-item">Overview</a>
-          <a href="#topic-distribution" class="navbar-item">Topic Distribution</a>
-          <a href="#research-tasks" class="navbar-item">Research Tasks</a>
-          <a href="#main-results" class="navbar-item">Main Results</a>
-          <a href="#human-consistency" class="navbar-item">Human Consistency</a>
-        </div>
-      </div>
-      <div class="navbar-item">
-        <a href="https://www.wenxiaobai.com/chat/xiaobaiyanbao" class="try-chat-btn">TRY CHAT</a>
-      </div>
-    </div>
-  </div>
+  <!-- Logo -->
+  <a href="https://www.wenxiaobai.com/chat" class="navbar-logo">
+    <img src="./static/images/logo_1.png" alt="DeepResearch Bench Logo">
+  </a>
+
+  <!-- 汉堡按钮：如需下拉菜单请自行在 /static/js/index.js 里绑定点击逻辑 -->
+  <button class="navbar-burger" aria-label="menu">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- 右侧 CTA -->
+  <a href="https://www.wenxiaobai.com/chat/xiaobaiyanbao" class="try-deepresearch-btn">TRY DEEPRESEARCH</a>
 </nav>
 
 
@@ -242,12 +187,12 @@
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered has-text-centered" id="abstract">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            <strong>Deep Research Agents (DRAs)</strong> currently represent one of the most widely used categories of LLM-based agents. By autonomously orchestrating multistep web exploration, targeted retrieval, and higher-order synthesis, they transform vast amounts of online information into analyst-grade, citation-rich reports—compressing hours of manual desk research into minutes.
+            <strong>Deep Research Agents (DRAs)</strong> currently represent one of the most widely used categories of LLM-based agents. By autonomously orchestrating multistep web exploration, targeted retrieval, and higher-order synthesis, they transform vast amounts of online information into analyst-grade, citation-rich reports--compressing hours of manual desk research into minutes.
           </p>
           <p>
             However, a comprehensive benchmark for systematically evaluating the capabilities of these agents remains absent. To bridge this gap, we present <strong>DeepResearch Bench</strong>, a benchmark consisting of 100 <strong>PhD-level</strong> research tasks, each meticulously crafted by domain experts across 22 distinct fields.
@@ -269,7 +214,7 @@
         <h2 class="title is-3">Overview of Benchmark Construction</h2>
         <div class="content has-text-justified">
           <p>
-            To comprehensively evaluate Deep Research Agents, we invited 100+ domain experts to create challenging research tasks that reflect real-world demands. This resulted in DeepResearch Bench, a benchmark consisting of 100 PhD-level research tasks—50 in Chinese and 50 in English—spanning 22 distinct fields.
+            To comprehensively evaluate Deep Research Agents, we invited 100+ domain experts to create challenging research tasks that reflect real-world demands. This resulted in DeepResearch Bench, a benchmark consisting of 100 PhD-level research tasks--50 in Chinese and 50 in English--spanning 22 distinct fields.
           </p>
           <p>
             We designed two complementary evaluation frameworks to assess different aspects of DRA capabilities: <strong>RACE</strong> (Reference-based Adaptive Criteria-driven Evaluation framework with Dynamic Weighting) for evaluating the quality of generated research reports, and <strong>FACT</strong> (Framework for Factual Abundance and Citation Trustworthiness) for assessing information retrieval effectiveness and citation accuracy. These frameworks work together to provide a comprehensive evaluation of deep research agents' performance.
@@ -286,7 +231,7 @@
         <h2 class="title is-3">Topic Distribution Analysis</h2>
         <div class="content has-text-justified">
           <p>
-            To ensure our benchmark reflects real-world research needs, we analyzed 96,147 raw user queries from interactions with web search-enabled LLM Chatbot. After filtering for queries that require deep research capabilities—involving multiple rounds of web searches, information gathering, and synthesis—we identified 44,019 relevant queries. We then employed DeepSeek-V3-0324 to classify these queries into 22 distinct topic domains.
+            To ensure our benchmark reflects real-world research needs, we analyzed 96,147 raw user queries from interactions with web search-enabled LLM Chatbot. After filtering for queries that require deep research capabilities--involving multiple rounds of web searches, information gathering, and synthesis--we identified 44,019 relevant queries. We then employed DeepSeek-V3-0324 to classify these queries into 22 distinct topic domains.
           </p>
           <p>
             The resulting distribution reveals that Science & Technology and Business & Finance represent the highest proportions of deep research queries. This distribution directly guided our benchmark construction, ensuring that the 100 tasks in DeepResearch Bench maintain the same topical balance as observed in real-world usage patterns.
@@ -303,7 +248,7 @@
         <h2 class="title is-3">Professional Research Tasks</h2>
         <div class="content has-text-justified">
           <p>
-            Each task in DeepResearch Bench was meticulously crafted by domain experts—PhD holders or senior practitioners with over five years of relevant experience. These tasks are designed to test the upper limits of DRAs' capabilities, requiring sophisticated multi-step reasoning, comprehensive information synthesis, and nuanced domain understanding.
+            Each task in DeepResearch Bench was meticulously crafted by domain experts--PhD holders or senior practitioners with over five years of relevant experience. These tasks are designed to test the upper limits of DRAs' capabilities, requiring sophisticated multi-step reasoning, comprehensive information synthesis, and nuanced domain understanding.
           </p>
           <p>
             The tasks span diverse research scenarios, from technical analysis in emerging technologies to comprehensive market research and scientific literature reviews, ensuring a thorough evaluation of agents' versatility across different research contexts.
@@ -519,7 +464,7 @@
 
         <div class="content has-text-justified" style="margin-top: 30px;">
           <p>
-            <strong>RACE Framework Results:</strong> Gemini-2.5-Pro Deep Research demonstrated leading overall performance (48.88) across all dimensions, with OpenAI Deep Research following closely (46.98). Notably, different models excelled in different dimensions—OpenAI Deep Research achieved the highest score in Instruction-Following (49.27), indicating that evaluation dimensions capture distinct capabilities.
+            <strong>RACE Framework Results:</strong> Gemini-2.5-Pro Deep Research demonstrated leading overall performance (48.88) across all dimensions, with OpenAI Deep Research following closely (46.98). Notably, different models excelled in different dimensions--OpenAI Deep Research achieved the highest score in Instruction-Following (49.27), indicating that evaluation dimensions capture distinct capabilities.
           </p>
           <p>
             <strong>FACT Framework Results:</strong> Deep Research Agents significantly outperformed LLMs with Search Tools in terms of Effective Citations. Gemini-2.5-Pro Deep Research achieved an exceptional 111.21 average effective citations, demonstrating superior information gathering capabilities. However, Perplexity Deep Research showed the highest Citation Accuracy (90.24%), indicating stronger precision in source attribution.
@@ -762,4 +707,4 @@
 </footer>
 
 </body>
-</html> 
+</html>
