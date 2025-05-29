@@ -35,11 +35,76 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/index.js"></script>
+  
+  <style>
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+    }
+    
+    .navbar-logo img {
+      height: 32px;
+      width: auto;
+    }
+    
+    .try-chat-btn {
+      display: inline-block;
+      background-color: transparent;
+      color: #000;
+      border: 1px solid #000;
+      border-radius: 30px;
+      padding: 10px 25px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      margin-left: 15px;
+    }
+    
+    .try-chat-btn:hover {
+      background-color: #E6D8FF;
+      color: #000;
+    }
+    
+    .navbar-item.has-dropdown {
+      position: relative;
+    }
+    
+    .navbar-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #fff;
+      border-radius: 6px;
+      box-shadow: 0 8px 16px rgba(10, 10, 10, 0.1);
+      z-index: 20;
+      min-width: 200px;
+    }
+    
+    .navbar-item.has-dropdown:hover .navbar-dropdown {
+      display: block;
+    }
+    
+    .navbar-dropdown .navbar-item {
+      padding: 0.5rem 1rem;
+      white-space: nowrap;
+    }
+    
+    .navbar-menu {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
+    <a href="https://www.wenxiaobai.com/chat" class="navbar-logo">
+      <img src="./static/images/logo_1.png" alt="DeepResearch Bench Logo">
+    </a>
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -47,8 +112,29 @@
     </a>
   </div>
   <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <!-- Navigation items removed as requested -->
+    <div class="navbar-start" style="flex-grow: 1;">
+      <!-- Left empty for balance -->
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item has-dropdown">
+        <a class="navbar-link">
+          <span class="icon">
+            <i class="fas fa-bars"></i>
+          </span>
+        </a>
+        <div class="navbar-dropdown">
+          <a href="#abstract" class="navbar-item">Abstract</a>
+          <a href="#BibTeX" class="navbar-item">BibTeX</a>
+          <a href="#benchmark-construction" class="navbar-item">Overview</a>
+          <a href="#topic-distribution" class="navbar-item">Topic Distribution</a>
+          <a href="#research-tasks" class="navbar-item">Research Tasks</a>
+          <a href="#main-results" class="navbar-item">Main Results</a>
+          <a href="#human-consistency" class="navbar-item">Human Consistency</a>
+        </div>
+      </div>
+      <div class="navbar-item">
+        <a href="https://www.wenxiaobai.com/chat" class="try-chat-btn">TRY CHAT</a>
+      </div>
     </div>
   </div>
 </nav>
@@ -178,7 +264,7 @@
     <!--/ Abstract. -->
 
     <!-- Benchmark Construction Overview. -->
-    <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
+    <div class="columns is-centered has-text-centered" style="margin-top: 40px;" id="benchmark-construction">
       <div class="column is-full-width">
         <h2 class="title is-3">Overview of Benchmark Construction</h2>
         <div class="content has-text-justified">
@@ -195,7 +281,7 @@
     <!--/ Benchmark Construction Overview. -->
 
     <!-- Topic Distribution Analysis. -->
-    <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
+    <div class="columns is-centered has-text-centered" style="margin-top: 40px;" id="topic-distribution">
       <div class="column is-full-width">
         <h2 class="title is-3">Topic Distribution Analysis</h2>
         <div class="content has-text-justified">
@@ -212,7 +298,7 @@
     <!--/ Topic Distribution Analysis. -->
 
     <!-- Professional Task Examples. -->
-    <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
+    <div class="columns is-centered has-text-centered" style="margin-top: 40px;" id="research-tasks">
       <div class="column is-full-width">
         <h2 class="title is-3">Professional Research Tasks</h2>
         <div class="content has-text-justified">
@@ -229,7 +315,7 @@
     <!--/ Professional Task Examples. -->
 
     <!-- Main Results. -->
-    <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
+    <div class="columns is-centered has-text-centered" style="margin-top: 40px;" id="main-results">
       <div class="column is-full-width">
         <h2 class="title is-3">Main Results</h2>
         <div class="content has-text-justified">
@@ -444,7 +530,7 @@
     <!--/ Main Results. -->
 
     <!-- Analysis. -->
-    <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
+    <div class="columns is-centered has-text-centered" style="margin-top: 40px;" id="human-consistency">
       <div class="column is-full-width">
         <h2 class="title is-3">Human Consistency</h2>
         <div class="content has-text-justified">
